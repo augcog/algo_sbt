@@ -1,0 +1,53 @@
+.settings-view-cards{
+    display: flex;
+    flex-direction: column;
+
+    gap: 104px;
+}
+
+.settings-card{
+    background-color: var(--color-white-faint);
+    border: 1px solid rgba(85, 86, 90, 0.12);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+}
+
+.settings-card__heading, .settings-card__body {
+    padding: 16px;
+    background: #F5F4F6;
+    border-bottom: 1px solid rgba(85, 86, 90, 0.12);   
+
+    text-align: center;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark);
+}
+
+.settings-card__body p{
+    font-weight: 400;
+}
+
+.dynamic-input-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.dync-input-edit-icon{
+    position: absolute;
+    right: 20px;
+
+    cursor: pointer;
+}
+
+.dynamic-textfield__wrapper{
+    width: 50%;
+}
+
+.dynamic-textfield__wrapper > div {
+    width: 100%;
+}

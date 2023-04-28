@@ -1,0 +1,41 @@
+.App{
+    height: 100vh;
+
+}
+
+.app-pages {
+    height: 100%;
+}
+
+.page-continer{
+    min-height: 100%;
+
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background: linear-gradient(116.74deg, rgba(121, 73, 255, 0.46) 0%, rgba(105, 126, 251, 0.46) 37.93%, rgba(83, 181, 250, 0.46) 66.75%);
+}
+
+.app-routes-wrapper{
+    width: 90%;
+    margin: auto;
+}
+
+.app-input.no-border{
+    border: none;
+    outline: none;
+    padding: 12px;
+}
+
+.footer-card{
+    background-color: #FFF;
+    min-height: 80px;
+    width: 40%;
+    margin: auto;
+    border: 1px solid var(--dark-light);
+    border-radius: 4px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}

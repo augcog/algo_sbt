@@ -1,0 +1,26 @@
+
+.header-tabs{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 4px;
+}
+
+.header-tabs .tab{
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark-light);
+
+    padding: 0 12px;
+    padding-bottom: 16px;
+    margin-top: 32px;
+    min-width: 100px;
+
+    text-align: center;
+}
+
+.header-tabs .tab.active{
+    border-bottom: 2px solid var(--dark);
+}

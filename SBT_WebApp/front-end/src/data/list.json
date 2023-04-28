@@ -1,0 +1,103 @@
+{
+    "lists": [
+      {
+        "id": "124",
+        "name": "ROAR",
+        "orderindex": 1,
+        "content": "Updated List Content",
+        "status": {
+          "status": "red",
+          "color": "#e50000",
+          "hide_label": true
+        },
+        "priority": {
+          "priority": "high",
+          "color": "#f50000"
+        },
+        "assignee": null,
+        "task_count": null,
+        "due_date": "1567780450202",
+        "start_date": null,
+        "folder": {
+          "id": "456",
+          "name": "Folder Name",
+          "hidden": false,
+          "access": true
+        },
+        "space": {
+          "id": "789",
+          "name": "Space Name",
+          "access": true
+        },
+        "archived": false,
+        "override_statuses": false,
+        "permission_level": "create"
+      },
+      {
+        "id": "12412",
+        "name": "SBT",
+        "orderindex": 1,
+        "content": "Updated List Content",
+        "status": {
+          "status": "red",
+          "color": "#e50000",
+          "hide_label": true
+        },
+        "priority": {
+          "priority": "high",
+          "color": "#f50000"
+        },
+        "assignee": null,
+        "task_count": null,
+        "due_date": "1567780450202",
+        "start_date": null,
+        "folder": {
+          "id": "456",
+          "name": "Folder Name",
+          "hidden": false,
+          "access": true
+        },
+        "space": {
+          "id": "789",
+          "name": "Space Name",
+          "access": true
+        },
+        "archived": false,
+        "override_statuses": false,
+        "permission_level": "create"
+      },
+      {
+        "id": "12124",
+        "name": "OpenARK",
+        "orderindex": 1,
+        "content": "Updated List Content",
+        "status": {
+          "status": "red",
+          "color": "#e50000",
+          "hide_label": true
+        },
+        "priority": {
+          "priority": "high",
+          "color": "#f50000"
+        },
+        "assignee": null,
+        "task_count": null,
+        "due_date": "1567780450202",
+        "start_date": null,
+        "folder": {
+          "id": "456",
+          "name": "Folder Name",
+          "hidden": false,
+          "access": true
+        },
+        "space": {
+          "id": "789",
+          "name": "Space Name",
+          "access": true
+        },
+        "archived": false,
+        "override_statuses": false,
+        "permission_level": "create"
+      }
+    ]
+  }

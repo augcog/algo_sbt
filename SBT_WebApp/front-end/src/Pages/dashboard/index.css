@@ -1,0 +1,46 @@
+.metrics-card-wrapper {
+	width: 918px;
+	height: 421px;
+
+	background: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 6px;
+
+	padding: 20px 18px;
+
+    display: flex;
+    align-items: center;
+
+    margin: auto
+}
+
+.metrics-card-body {
+	display: grid;
+	grid-template-columns: 1fr 1fr; /* two columns with equal width */
+
+    width: 80%;
+    margin: auto;
+}
+
+.metrics-card-row {
+	min-width: 401px;
+	height: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.metrics-card-row .metrics-card-row__stat {
+	font-weight: 400;
+	font-size: 45px;
+	line-height: 150%;
+	color: #121212;
+}
+
+.metrics-card-row .metrics-card-row__label {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	color: #7d8398;
+}

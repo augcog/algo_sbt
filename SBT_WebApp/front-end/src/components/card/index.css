@@ -1,0 +1,48 @@
+.app-card-wrapper{
+    background: #FFFFFF;
+    border: 1px solid rgba(85, 86, 90, 0.12);
+    border-radius: 8px;
+
+    max-width: 553px;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.app-card-head{
+    background: #F5F4F6;
+border: 1px solid rgba(85, 86, 90, 0.12);
+border-radius: 8px;
+
+padding: 12px 28px;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.app-card-head .card-heading-right, .app-card-body .wallet-input{
+    display: flex;
+    align-items: center;
+
+    border: 1px solid rgba(85, 86, 90, 0.12);
+    border-radius: 8px;
+}
+
+.app-card-body{
+    display: flex;
+align-items: center;
+justify-content: space-between;
+
+padding: 16px 28px;
+}
+
+.app-card-body .wallet-icon {
+    width: 56px;
+    height: 55px;
+}
+
+.app-card-body .wallet-icon img{
+    width: 100%;
+    height: 100%;
+}

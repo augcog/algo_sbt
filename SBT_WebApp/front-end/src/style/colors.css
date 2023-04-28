@@ -1,0 +1,16 @@
+:root{
+    --color-white-dark: #DFE1E6;
+    --color-white-off:#f8f9fa;
+    --color-white-standard: #EBECF0;
+    --color-white-light: #F4F5F7;
+    --color-white-subdued: #FAFBFC;
+    --color-white-faint: #FFFFFF;
+
+    /* Dark Neutral */
+    --dark: #121212;
+    --dark-light: #7D8398;
+    
+    --dark-standard: #172b4d;
+    --dark-subdued: #c1c7d0;
+    --dark-faint: #dfe1e6;
+}

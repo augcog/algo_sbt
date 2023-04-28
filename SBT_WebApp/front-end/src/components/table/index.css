@@ -1,0 +1,88 @@
+
+/* TABLE CSS */
+
+
+thead tr{
+    background-color: #F5F4F6;
+    padding: 0 24px;
+}
+
+
+th.MuiTableCell-head{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--dark);
+    padding: 16px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+td.MuiTableCell-body > span , th.MuiTableCell-head > span{
+    padding: 0;
+}
+
+td.MuiTableCell-body {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color:var(--dark)
+}
+
+.MuiInputBase-formControl {
+   margin-top: 0 !important;
+}
+
+td .app-input{
+    width: 50px;
+}
+
+.initials-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.initials-container div{
+    font-size: 14px;
+}
+
+.empty-table-state{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    gap: 24px;
+    padding: 24px;
+
+    background-color: var(--color-white-faint);
+}
+
+.app-table-row-actions{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap:16px;
+}
+
+
+.app-table-row-actions div{
+    cursor: pointer;
+}
+
+.table-dynamic-input.is-edit-mode {
+    
+    border: 1px solid rgba(85, 86, 90, 0.12);
+    border-radius: 8px;
+}
+
+.table-dynamic-input input{
+
+    width: 100%;
+    padding: 8px !important;
+}

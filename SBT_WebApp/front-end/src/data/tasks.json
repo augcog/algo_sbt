@@ -1,0 +1,96 @@
+{
+    "tasks": [
+      {
+        "id": "9hx",
+        "name": "New Task Name",
+        "subTask":"sub task",
+        "weight":"40%",
+        "contribution":[
+            {"_id":"asdf","value":"Peer Review"},
+            {"_id":"o12j41kj","value":"1/N"}
+        ],
+        "status": {
+          "status": "Open",
+          "color": "#d3d3d3",
+          "orderindex": 0,
+          "type": "open"
+        },
+        "orderindex": "1.00000000000000000000000000000000",
+        "date_created": "1567780450202",
+        "date_updated": "1567780450202",
+        "date_closed": null,
+        "date_done": null,
+        "creator": {
+          "id": 183,
+          "username": "John Doe",
+          "color": "#827718",
+          "profilePicture": "https://attachments-public.clickup.com/profilePictures/183_abc.jpg"
+        },
+        "assignees": [],
+        "checklists": [],
+        "tags": [],
+        "parent": null,
+        "priority": null,
+        "due_date": null,
+        "start_date": null,
+        "time_estimate": null,
+        "time_spent": null,
+        "list": {
+          "id": "123"
+        },
+        "folder": {
+          "id": "456"
+        },
+        "space": {
+          "id": "789"
+        },
+        "url": "https://app.clickup.com/t/9hx"
+      },
+      {
+        "id": "9hz",
+        "name": "Second task",
+        "subTask":"sub task",
+        "weight":"40%",
+        "contribution":[
+            {"_id":"asdf","value":"Peer Review"},
+            {"_id":"o12j41kj","value":"1/N"}
+        ],
+        "status": {
+          "status": "Open",
+          "color": "#d3d3d3",
+          "orderindex": 0,
+          "type": "open"
+        },
+        "orderindex": "2.00000000000000000000000000000000",
+        "date_created": "1567780450202",
+        "date_updated": "1567780450202",
+        "date_closed": null,
+        "date_done": null,
+        "creator": {
+          "id": 183,
+          "username": "John Doe",
+          "color": "#827718",
+          "profilePicture": "https://attachments-public.clickup.com/profilePictures/183_abc.jpg"
+        },
+        "assignees": [],
+        "checklists": [],
+        "tags": [],
+        "parent": null,
+        "priority": null,
+        "due_date": null,
+        "start_date": null,
+        "time_estimate": null,
+        "time_spent": null,
+        "list": {
+          "id": "123"
+        },
+        "folder": {
+          "id": "456"
+        },
+        "space": {
+          "id": "789"
+        },
+        "url": "https://app.clickup.com/t/9hz"
+      }
+    ]
+  }

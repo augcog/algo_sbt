@@ -1,0 +1,52 @@
+{
+    "teams": [
+      {
+        "id": "9a3a518e-51da-4d49-8616-5ff58a62221a",
+        "name": "My ClickUp Workspace 0",
+        "color": "#000000",
+        "avatar": "https://clickup.com/avatar.jpg",
+        "members": [
+          {
+            "user": {
+              "id": 123,
+              "username": "John Doe",
+              "color": "#000000",
+              "profilePicture": "https://clickup.com/avatar.jpg"
+            }
+          }
+        ]
+      },
+      {
+        "id": "a11c6d8f-c704-4f99-a067-d57f01558205",
+        "name": "My ClickUp Workspace 1",
+        "color": "#000000",
+        "avatar": "https://clickup.com/avatar.jpg",
+        "members": [
+          {
+            "user": {
+              "id": 123,
+              "username": "John Doe",
+              "color": "#000000",
+              "profilePicture": "https://clickup.com/avatar.jpg"
+            }
+          }
+        ]
+      },
+      {
+        "id": "f0af9a6e-7780-4aa8-badf-e1409e0ffffb",
+        "name": "My ClickUp Workspace 2",
+        "color": "#000000",
+        "avatar": "https://clickup.com/avatar.jpg",
+        "members": [
+          {
+            "user": {
+              "id": 123,
+              "username": "John Doe",
+              "color": "#000000",
+              "profilePicture": "https://clickup.com/avatar.jpg"
+            }
+          }
+        ]
+      }
+    ]
+  }

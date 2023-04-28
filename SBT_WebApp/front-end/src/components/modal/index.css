@@ -1,0 +1,22 @@
+.modal-assignees-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.app-modal-body-assignees{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    margin: 40px 0;
+}
+
+.app-modal-footer{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    gap: 16px;
+}

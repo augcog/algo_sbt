@@ -1,0 +1,27 @@
+.app-heading-3{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 150%;    
+    color: var(--dark);
+}
+
+
+.page-sub-header{
+    padding: 44px;
+    padding-bottom: 0;
+    background-color: var(--color-white-faint);
+}
+
+.page-sub-header-main{
+    border-bottom: 1px solid rgba(85, 86, 90, 0.12);
+}
+
+.space-selction-container{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 104px;
+
+    margin-top: 16px;
+}
