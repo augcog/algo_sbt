@@ -1,11 +1,12 @@
-ReactJS Front-end
+# Project Technical Documentation
 
+## ReactJS Front-end
 React JS Project Setup with Vite and Yarn
 This readme file will guide you through the steps required to run a basic React JS project using Vite and Yarn. Please ensure that you have these tools installed before proceeding.
 
-Installation
+### Installation
 SKIP THIS STEP: if node js is already installed
-### Installing Node.js
+#### Installing Node.js
 1. Go to the Node.js website at https://nodejs.org and download the Windows installer for the latest LTS (Long-term Support) version.
 2. Run the installer and follow the instructions to complete the installation.
 3. Verify that Node.js is installed correctly by opening a command prompt and running the following command:
@@ -14,7 +15,7 @@ node --version
 ```
 This should display the version of Node.js that you just installed.
 
-### Installing Yarn
+#### Installing Yarn
 `SKIP THIS STEP: if yarn is already installed `
 1. Go to the Yarn website at https://yarnpkg.com and download the Windows installer.
 2. Run the installer and follow the instructions to complete the installation.
@@ -26,8 +27,7 @@ This should display the version of Yarn that you just installed.
 
 That's it! Now you should have Node.js and Yarn installed on your Windows machine.
 
-
-Running the Front-end
+#### Running the Front-end
 1. Install the project dependencies using yarn:
 ```
 yarn
@@ -39,7 +39,7 @@ yarn dev
 ```
 This will start the development server at `http://localhost:5173`
 
-Project Structure
+#### Project Structure
 
 The project structure for a basic React JS project using Vite and Yarn is as follows:
 ```
@@ -65,12 +65,12 @@ The project structure for a basic React JS project using Vite and Yarn is as fol
 - `vite.config.js`: Configuration file for Vite.
 - `yarn.lock`: File specifying the exact versions of the project dependencies installed.
 
-Node.js Back-end
-# Node.js Project Setup 
+## Node.js Back-end
+#### Node.js Project Setup 
 
 Installation
 
-### Installing Node.js
+#### Installing Node.js
 `SKIP THIS STEP: if node js is already installed `
 1. Go to the Node.js website at https://nodejs.org and download the Windows installer for the latest LTS (Long-term Support) version.
 2. Run the installer and follow the instructions to complete the installation.
@@ -80,7 +80,7 @@ node --version
 ```
 This should display the version of Node.js that you just installed.
 
-Running the Project
+#### Running the Project
 
 1. Install the project dependencies using npm:
 ```
@@ -94,16 +94,14 @@ node server.js
 This will start the development server at `http://localhost:8000`
 
 
-MongoDB DataStore
+## MongoDB DataStore
 
 https://www.mongodb.com/atlas/database
-faxowi9153@raotus.com Shared@123!
 Add any new ip to network access
 
 
-IPFS Document Sharing
-
-Installation
+## IPFS Document Sharing
+#### Installation
 wget https://dist.ipfs.tech/kubo/v0.19.0/kubo_v0.19.0_linux-amd64.tar.gz
 tar -xvzf kubo_v0.19.0_linux-amd64.tar.gz
 cd kubo
@@ -112,19 +110,19 @@ ipfs --version
 
 JS-IPFS is being discontinued. Helia (modern IPFS JS implementation) is still under development. So we install the Go version, which is most popular and supports RPC API
 
-Installing Python IPFS-API
+#### Installing Python IPFS-API
 pip install ipfs-api
 
-Initializing
+#### Initializing
 ipfs init
 Run the ipfs cat command suggested on the terminal, after ipfs init
 In a new terminal window: 
 ipfs daemon
 
-Test Adding files
+#### Test Adding files
 Refer https://pypi.org/project/ipfs-api/
 
-Viewing the content
+#### Viewing the content
 Note down the unique Content Identifier (CID) such as  QmccfwfRg4N6Jx8V33hyG3SgkXhi6EqPZPzN9CATDBv54S, 
 Goto Brave browser, and type in CID format: ipfs://QmccfwfRg4N6Jx8V33hyG3SgkXhi6EqPZPzN9CATDBv54S to view the file or type in URL format: https://ipfs.io/ipfs/QmccfwfRg4N6Jx8V33hyG3SgkXhi6EqPZPzN9CATDBv54S
 
