@@ -126,12 +126,12 @@ Refer https://pypi.org/project/ipfs-api/
 Note down the unique Content Identifier (CID) such as  QmccfwfRg4N6Jx8V33hyG3SgkXhi6EqPZPzN9CATDBv54S, 
 Goto Brave browser, and type in CID format: ipfs://QmccfwfRg4N6Jx8V33hyG3SgkXhi6EqPZPzN9CATDBv54S to view the file or type in URL format: https://ipfs.io/ipfs/QmccfwfRg4N6Jx8V33hyG3SgkXhi6EqPZPzN9CATDBv54S
 
-Algorand
+## Algorand
 
-Installation
+#### Installation
 git clone https://github.com/algorand/sandbox.git
 
-Running Algorand Node
+#### Running Algorand Node
 cd sandbox
 ./sandbox up (or ./sandbox up testnet for running testnet)
 
