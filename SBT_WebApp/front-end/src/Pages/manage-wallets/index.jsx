@@ -1,12 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Button from '@mui/material/Button';
 import TableSbtSettings from '../../components/table/sbt-settings'
 import TableManageWallets from '../../components/table/manage-wallets'
 import { saveManageWallets } from '../../services/manage-wallets';
 
-export default function ManageWallets({assignees=[], workspaceId, spaceId, activeListId}) {
+export default function ManageWallets({assignees=[], workspaceId, spaceId, activeListId, setUserWallets, userWallets}) {
 
     const [rows, setRows] = useState(assignees)
+    
 
     const handleRowDelete = (index)=>{
         const updatedRows = rows.filter((r,idx)=> idx !== index ) 
@@ -20,17 +21,19 @@ export default function ManageWallets({assignees=[], workspaceId, spaceId, activ
             }
             return row
         }  )
+        const updatedUserWallets = {...userWallets}
+        updatedUserWallets[updatedRow.email] = updatedRow.walletaddress
+        setUserWallets(updatedUserWallets)
         setRows(updatedRows)
     }
 
     const handleSubmit = async ()=>{
         try {
-            const newRows = rows.map((row)=> { return {...row?.data,  workspaceId, spaceId, activeListId} })
+            const newRows = rows.map((row)=> { return {...row,  workspaceId, spaceId, listId:activeListId} })
             await  saveManageWallets(newRows)
         } catch (error) {
             console.log(error)
         }
-
     }
 
   return (

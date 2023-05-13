@@ -6,12 +6,12 @@ import { getLists, getSpaces, getTasks, getWorkspaces } from "../services";
 import AppSubHeader from "../components/headers/sub-header";
 import { findObjectByValue } from "../utils/helpers";
 import Mint from "../Pages/mint";
-import Issue from "../Pages/issue";
 import Revoke from "../Pages/revoke";
 import Settings from "../Pages/settings";
 import SBTSettings from "../Pages/sbt-settings";
 import ManageWallets from "../Pages/manage-wallets";
 import Dashboard from "../Pages/dashboard";
+import { getManageWallets } from "../services/manage-wallets";
 
 const PAGES = [
 	{
@@ -40,24 +40,18 @@ const PAGES = [
 	},
 	{
 		id: "5",
-		name: "Issue SBT",
-		route: "/issue",
-		bgColor: "rgb(255, 174, 32)",
-	},
-	{
-		id: "6",
 		name: "Revoke SBT",
 		route: "/revoke",
 		bgColor: "rgb(123, 80, 252)",
 	},
 	{
-		id: "7",
+		id: "6",
 		name: "SBT Settings",
 		route: "/sbt-settings",
 		bgColor: "rgb(105, 126, 251)",
 	},
 	{
-		id: "8",
+		id: "7",
 		name: "Settings",
 		route: "/settings",
 		bgColor: "rgb(83, 181, 250)",
@@ -80,6 +74,9 @@ const AppRoutes = () => {
 
     const [assignees, setAssignees] = useState([]);
     const [selectedAssignee, setSelectedAssignee] = useState([]);
+
+	const [userWallets, setUserWallets] = useState({})
+	const [manageWallets, setManageWallets] = useState([])
 
 	const navigate = useNavigate();
 
@@ -127,6 +124,23 @@ const AppRoutes = () => {
 			fetchTasks(selectedWs?._id, selectedSpace?._id, activeList?._id);
 	}, [activeList]);
 
+	useEffect(()=>{
+		if (selectedSpace?._id && selectedWs?._id && activeList?._id){
+			fetchUserWallets()
+		}
+	},[activeList, selectedWs, selectedSpace])
+
+	useEffect(()=>{
+		if (manageWallets.length){
+			const updatedUserWallets = {...userWallets}
+			for (let wallet of manageWallets) {
+				updatedUserWallets[wallet.email] = wallet?.walletaddress
+			}
+			setUserWallets(updatedUserWallets)
+		}
+	},[manageWallets])
+
+
 	const fetchWs = async () => {
 		const ws = await getWorkspaces();
 		setWorkspaces(ws?.data?.teams.map((w) => ({ _id: w.id, value: w.name, data: w })));
@@ -151,7 +165,7 @@ const AppRoutes = () => {
 			if(task?.contribution_approach === "1/N" ){
 
 				const contribs = task?.assignees?.map((a)=>{
-					const newContrib = {[a.username]: (100 / task.assignees.length).toFixed(0)}
+					const newContrib = {[a.username]: parseFloat((100 / task.assignees.length).toFixed(0))}
 					return newContrib;
 				})
 
@@ -164,6 +178,11 @@ const AppRoutes = () => {
 
 		setTasks(sanitizeTasks);
 	};
+
+	const fetchUserWallets = async () =>{
+		const wallets = await getManageWallets(selectedWs?._id, selectedSpace?._id, activeList?._id)
+		setManageWallets(wallets || [])
+	}
 
 	const handleWsChange = async (event) => {
 		const s = findObjectByValue(event.target.value, workspaces);
@@ -211,15 +230,15 @@ const AppRoutes = () => {
 				/>
 				<Route
 					path="manage-project"
-					element={<MangeProject tasks={tasks} setTasks={setTasks} />}
+					element={<MangeProject tasks={tasks} setTasks={setTasks} userWallets={userWallets} />}
+				/>
+				<Route
+					path="manage-project/:workspaceId/:spaceId"
+					element={<MangeProject tasks={tasks} setTasks={setTasks} userWallets={userWallets} />}
 				/>
 				<Route
 					path="mint"
 					element={<Mint workspaceId={selectedWs?._id} spaceId={selectedSpace?._id} assignee={selectedAssignee} />}
-				/>
-				<Route
-					path="issue"
-					element={<Issue workspaceId={selectedWs?._id} spaceId={selectedSpace?._id} assignee={selectedAssignee} />}
 				/>
 				<Route
 					path="revoke"
@@ -235,7 +254,7 @@ const AppRoutes = () => {
 				/>
 				<Route
 					path="manage-wallets"
-					element={<ManageWallets assignees={assignees} workspaceId={selectedWs?._id} spaceId={selectedSpace?._id} activeListId={activeList?._id} />}
+					element={<ManageWallets assignees={ manageWallets.length ?  manageWallets : assignees.map((a)=> a.data )} workspaceId={selectedWs?._id} spaceId={selectedSpace?._id} activeListId={activeList?._id} userWallets={userWallets} setUserWallets={setUserWallets} />}
 				/>
 			</Routes>
         </div>

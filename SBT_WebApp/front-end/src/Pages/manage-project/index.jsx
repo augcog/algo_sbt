@@ -5,7 +5,7 @@ import AppTable from "../../components/table";
 import AppModal from "../../components/modal";
 import "./index.css";
 import Card from "../../components/card";
-import { saveProject } from "../../services/manage-project";
+import { saveProject, saveWallets } from "../../services/manage-project";
 
 const column = () => [
 	{
@@ -121,9 +121,10 @@ const column = () => [
 	},
 ];
 
-export default function MangeProject({tasks=[], setTasks}) {
+export default function MangeProject({tasks=[], setTasks, userWallets={}}) {
 
 	const [activeRow, setActiveRow] = useState([])
+	const [htmlFilesHash, setHtmlFilesHash] = useState('')
 
 	const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -158,13 +159,31 @@ export default function MangeProject({tasks=[], setTasks}) {
 	  }
 
 	  const handleSaveTasks = async () =>{
-			await saveProject(tasks)
+
+		const taskWeights = tasks.map((task)=>{
+			let task_contrib = task.contributions?.map((c)=>{
+				const contrib = Object.values(c)[0]
+				if(contrib && contrib > 1){
+					return contrib/100
+				}
+				return contrib
+			} )
+			 
+			const taskWeight = { [task.id]:{ name: task.name, weight: ((task.weight)/100), task_contrib  } }
+
+			return taskWeight
+		})
+
+		const html_files_hash = await saveWallets({ tasks_list:tasks, wallets:userWallets, weight:taskWeights })
+		setHtmlFilesHash(html_files_hash)
+		await saveProject(tasks)
+
 	  }
 
 	  const handleWeightChange = (row, weight) => {
 		const updatedTasks = tasks?.map((task)=>{
 			if(task?.id === row.id){
-				return {...task, weight}
+				return {...task, weight: parseFloat(weight) }
 			}
 			return task
 		})
@@ -183,6 +202,10 @@ export default function MangeProject({tasks=[], setTasks}) {
 				<div className="page-footer-action" >
                 <Button variant="contained" style={{backgroundColor:"var(--dark)"}} size="large" onClick={handleSaveTasks} >Update Status on Blockchain</Button>
             </div>
+
+			{htmlFilesHash && <div className="footer-card">
+				{htmlFilesHash?.toString()}
+			</div>}
 			</div>
 		</>
 	);

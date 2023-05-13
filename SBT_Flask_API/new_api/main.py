@@ -8,6 +8,8 @@ from algosdk.v2client import indexer
 from mint_SBT import create_non_fungible_token
 from claim_SBT import distributeAsset
 from revoke_SBT import RevokeAsset
+import os
+import ipfsApi
 # instantiate indexer client
 myindexer = indexer.IndexerClient(indexer_token="", indexer_address="http://localhost:8980")
 
@@ -112,5 +114,98 @@ def revoke():
         return "You have successfully revoke SBT!"
     except: 
         return "Error"
+
+@app.route('/manage-wallets', methods=['POST'])
+def ipfs_html_gen():
+
+    data = request.get_json()
+    tasks_list = data.get("tasks_list")
+    wallets = data.get("wallets")
+    weight = data.get("weight")
+   
+    
+    output = []
+    project_completion = 0
+    for idx, sub_task in enumerate(tasks_list['tasks']):
+        if ((sub_task["status"]["status"]=="complete")):
+            assignees = []
+            for a in sub_task['assignees']:
+                assignees.append(a['email'])
+            project_name = sub_task['list']['name']
+            task_weight = weight[sub_task['id']]['weight']
+            project_completion += float(task_weight)
+            try:
+                task_contrib = weight[sub_task['id']]['task_contrib']*task_weight
+            except:
+                if len(assignees)>=1:
+                    task_contrib = [task_weight/len(assignees)] * len(assignees)
+                else:
+                    task_contrib = None
+            output.append({'task_id': sub_task['id'],
+                           'task_name': sub_task['name'],
+                           'task_finish_date': sub_task['due_date'],
+                           'task_assignees': assignees,
+                           'parent_task': sub_task['parent'],
+                           'task_weight': task_weight,
+                           'task_contrib': task_contrib})
+
+    html_files_hash = []
+    ipfsapi = ipfsApi.Client('127.0.0.1', 5001)
+    for e in wallets:
+        document = ''
+        html_doc_head = '''<html><head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <style>body{ margin:0 100; background:whitesmoke; }</style>
+        </head>
+        <body>'''
+    
+        html_doc_heading = "<h1>{}</h1>".format(project_name)
+        html_doc_project_progress = "<h3>Project Completion: {}%</h3>".format(str(round(project_completion * 100,3)))
+    
+        html_wallet_details = "<h3>{} | {}</h3>".format(e, wallets[e])
+        
+        html_table_header = '''<table class="table table-striped">
+        <th>Task Name</th><th>Completion Date</th>'''
+        
+        contrib_e = 0.0
+        html_row = ''
+        for o in output:
+            if e in o['task_assignees']:
+                idx_e = o['task_assignees'].index(e)
+                contrib_e +=  o['task_contrib'][idx_e]
+                
+                html_row += '''<tr><td>{}</td><td>{}</td></tr>'''.format(o['task_name'], 
+                                                                         str(datetime.fromtimestamp(int(int(o['task_finish_date'])/1000)).date()))
+
+        html_table_footer = '</table>'
+        html_footer = "<h3>Overall Contribution: {}%</h3>".format(str(round(contrib_e * 100,2)))
+
+        html_doc_end = '''</body></html>'''
+        
+        if not os.path.exists('./ipfs_files/'):
+            os.makedirs('ipfs_files')
+        
+        document = html_doc_head + html_doc_heading + html_doc_project_progress + html_wallet_details + html_table_header + html_row + html_table_footer + html_footer + html_doc_end
+
+        with open('./ipfs_files/' + project_name + '_' + e.rsplit('@', 1)[0] + '.html', "w") as file:
+            file.write(document)
+            
+        
+        #ipfs_html_file = ipfsapi.add_pyobj(document)
+        #html_files_hash.append(ipfs_html_file)
+            
+    files_list = os.listdir('./ipfs_files')
+    
+    for f in files_list:
+        ipfs_html_file = None
+        ipfs_html_file = ipfsapi.add('./ipfs_files/' + f)
+        #ipfs_html_file['URL'] =  'ipfs://' + ipfs_html_file['Hash']
+        html_files_hash.append(ipfs_html_file)
+        
+    #optionally delete the folder
+    #if os.path.exists('./ipfs_files/'):
+    #    os.rmdir('ipfs_files')
+        
+    return html_files_hash
 
 app.run(port=8085,debug=True,threaded=True)

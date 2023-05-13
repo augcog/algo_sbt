@@ -54,7 +54,7 @@ export default function TableManageWallets({ rows, handleRowDelete, handleUpdate
 	const handleRowChange = (e) => {
 		try {
 			const value = e.target.value;
-			setActiveRow({ ...activeRow, data:{...activeRow.data,walletaddress: value} });
+			setActiveRow({ ...activeRow, data:{...activeRow,walletaddress: value} });
 		} catch (error) {
 			console.log(error)
 		}
@@ -93,23 +93,23 @@ export default function TableManageWallets({ rows, handleRowDelete, handleUpdate
 													type="text"
 													className="app-input no-border"
 													value={
-														activeRow?.data?.walletaddress
+														activeRow?.walletaddress
 													}
 													onChange={handleRowChange}
 												/>
 											) : (
-												`${row?.data?.walletaddress?.slice(
+												`${row?.walletaddress?.slice(
 													0,
 													5
-												)||""}....${row?.data?.walletaddress?.slice(-5)||""}`
+												)||""}....${row?.walletaddress?.slice(-5)||""}`
 											)}
 										</div>
 									</TableCell>
 									<TableCell align="center" style={{ whiteSpace: "nowrap" }}>
-										{row?.data?.username}
+										{row?.username}
 									</TableCell>
 									<TableCell align="center" style={{ whiteSpace: "nowrap" }}>
-										{row?.data?.email}
+										{row?.email}
 									</TableCell>
 									<TableCell align="right">
 										<div className="app-table-row-actions">

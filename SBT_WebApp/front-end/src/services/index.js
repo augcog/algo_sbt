@@ -77,16 +77,6 @@ async function saveMint(body){
 		console.log(error)
 	}
 }
-async function saveIssue(body){
-    try {
-        await httpClient.post(
-            `${BASE_URL}/issue`,body
-        )
-
-	} catch (error) {
-		console.log(error)
-	}
-}
 
 async function saveRevoke(body){
     try {
@@ -107,6 +97,5 @@ export  {
     saveContributions,
     getUser,
     saveMint,
-    saveIssue,
     saveRevoke
 }

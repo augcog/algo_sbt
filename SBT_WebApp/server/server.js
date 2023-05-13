@@ -138,14 +138,14 @@ app.get("/spaces/:teamId/lists/:spaceId/tasks/:listId", async (req, res) => {
 	}
 });
 
-app.post("/contributions", (req, res) => {
+app.post("/contributions", async (req, res) => {
 	try {
 		// Get the request body
 		const body = req.body;
 
 		const dbUtil = new Operation("contributions");
 		
-		const result = dbUtil.create(body);
+		const result = await dbUtil.create(body);
 
 		res.send(result);
 	} catch (error) {
@@ -153,39 +153,41 @@ app.post("/contributions", (req, res) => {
 	}
 });
 
-app.post("/mint", (req, res) => {
+app.post("/mint", async (req, res) => {
 	try {
 		// Get the request body
 		const body = req.body;
 
 		const dbUtil = new Operation("mint");
-		const result = dbUtil.create(body);
+		const result = await dbUtil.create(body);
 
 		res.send(result);
 	} catch (error) {
 		console.log(error);
 	}
 });
-app.post("/issue", (req, res) => {
+
+app.post("/issue", async (req, res) => {
 	try {
 		// Get the request body
 		const body = req.body;
 
 		const dbUtil = new Operation("issue");
-		const result = dbUtil.create(body);
+		const result = await dbUtil.create(body);
 
 		res.send(result);
 	} catch (error) {
 		console.log(error);
 	}
 });
-app.post("/revoke", (req, res) => {
+
+app.post("/revoke", async (req, res) => {
 	try {
 		// Get the request body
 		const body = req.body;
 
 		const dbUtil = new Operation("revoke");
-		const result = dbUtil.create(body);
+		const result = await dbUtil.create(body);
 
 		res.send(result);
 	} catch (error) {
@@ -193,13 +195,13 @@ app.post("/revoke", (req, res) => {
 	}
 });
 
-app.post("/settings", (req, res) => {
+app.post("/settings", async (req, res) => {
 	try {
 		// Get the request body
 		const body = req.body;
 
 		const dbUtil = new Operation("settings");
-		const result = dbUtil.create(body);
+		const result = await dbUtil.create(body);
 
 		res.send(result);
 	} catch (error) {
@@ -214,8 +216,8 @@ app.post("/manage-wallets", (req, res) => {
 
 		const dbUtil = new Operation("manage_wallets");
 		
-		body?.forEach((data, idx)=>{
-			const result = dbUtil.create(data);
+		body?.forEach(async (data, idx)=>{
+			const result = await dbUtil.create(data);
 		})
 
 		res.send({message:"data saved"});
@@ -224,15 +226,39 @@ app.post("/manage-wallets", (req, res) => {
 	}
 });
 
-app.post("/project-contrib", (req, res) => {
+app.get("/manage-wallets/:workspaceId", async (req, res) => {
+	try {
+		// Get the request body
+		const {workspaceId} = req.params
+		const {spaceId, listId} = req.query;
+		
+		const dbUtil = new Operation("manage_wallets");
+
+		const query = {}
+		if(spaceId){
+			query.spaceId = spaceId
+		}
+		if(listId){
+			query.listId = listId
+		}
+
+		const manageWallets = await dbUtil.read(query);
+		
+		res.send({data:manageWallets});
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+app.post("/project-contrib", async (req, res) => {
 	try {
 		// Get the request body
 		const body = req.body;
 
 		const dbUtil = new Operation("project_contrib");
 		
-		body?.forEach((data, idx)=>{
-			const result = dbUtil.create(data);
+		body?.forEach(async (data, idx)=>{
+			const result = await dbUtil.create(data);
 		})
 
 		res.send({message:"data saved"});
@@ -240,7 +266,6 @@ app.post("/project-contrib", (req, res) => {
 		console.log(error);
 	}
 });
-
 
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);

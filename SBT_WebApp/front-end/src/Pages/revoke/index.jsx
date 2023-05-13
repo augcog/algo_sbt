@@ -4,34 +4,26 @@ import Button from "@mui/material/Button";
 import "./index.css";
 import { saveRevoke } from "../../services";
 import Card from "../../components/card";
-import { saveRevokeSBT } from "../../services/revoke";
+
 export default function Revoke({workspaceId, spaceId, assignee}) {
 	const [receiverWalletAddress, setWalletAddressR] = useState("");
-	const [sbtID, setSBTID] = useState("");
+	const [settingsID, setSettingsID] = useState("");
 	const [issuerWalletAddress, setWalletAddressI] = useState("");
 	const [privateKey, setPrivateKey] = useState("");
 
 	const handleSubmit = async () => {
 		await saveRevoke({
 			receiverWalletAddress,
-			sbtID,
+			settingsID,
 			issuerWalletAddress,
 			privateKey,
 			workspaceId,
 			spaceId,
             assignee:{ id:assignee?._id, username:assignee?.value }
 		});
-		const revokeResp = await saveRevokeSBT({
-			receiverWalletAddress,
-			sbtID,
-			issuerWalletAddress,
-			privateKey,
-			workspaceId,
-			spaceId,
-            assignee:{ id:assignee?._id, username:assignee?.value }
-		})
+
 		setWalletAddressR("");
-		setSBTID("");
+		setSettingsID("");
 		setWalletAddressI("");
 		setPrivateKey("");
 	};
@@ -55,12 +47,12 @@ export default function Revoke({workspaceId, spaceId, assignee}) {
 					<TextField
 						id="outlined-basic"
 						variant="outlined"
-						placeholder="SBT ID"
-						value={sbtID}
+						placeholder="SBT Settings ID"
+						value={settingsID}
 						onChange={(event) => {
-							setSBTID(event.target.value);
+							setSettingsID(event.target.value);
 						}}
-						// label="SBT ID"
+						// label="SBT Settings ID"
 					/>
 				</div>
 				<div className="mint-page-input">

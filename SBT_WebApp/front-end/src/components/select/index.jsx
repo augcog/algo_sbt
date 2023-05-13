@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import "./index.css"
 
-const AppSelect = ({ label, value="", list, handleChange }) => {
+const AppSelect = ({ label, value="", list=[], handleChange }) => {
 
 	return (
 		<FormControl variant="standard">
@@ -24,33 +24,3 @@ const AppSelect = ({ label, value="", list, handleChange }) => {
 };
 
 export default AppSelect;
-
-{/* <List
-						list={workspaces}
-						activeItem={selectedWs}
-						selectCallback={(item) => setSeletedWs(item)}
-                        buttonPlaceholder="Select Org"
-					>
-						{workspaces.map((item) => {
-							return (
-								<ListItem key={item._id} data={item}>
-									{item.value}
-								</ListItem>
-							);
-						})}
-					</List>
-						
-					<List
-						list={spaces}
-						activeItem={selectedSpace}
-						selectCallback={(item) => setSelectedSpace(item)}
-                        buttonPlaceholder="Select Initiative"
-					>
-						{spaces.map((item) => {
-							return (
-								<ListItem key={item._id} data={item}>
-									{item.value}
-								</ListItem>
-							);
-						})}
-					</List> */}

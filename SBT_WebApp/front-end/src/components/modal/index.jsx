@@ -44,12 +44,12 @@ export default function AppModal({ open, handleOpen, handleClose, row, handleSav
       };
 
 	const handleSaveButtonClick = async () => {
-		const contributons = assignees.map(({ username, value }) => ({ [`${username}`]: value }));
+		const contributions = assignees.map(({ username, value }) => ({ [`${username}`]: parseFloat(value) }));
 		const body = {
             wrokspaceId:row?.team_id,
             spaceId:row?.list?.id,
             taskId:row?.id,
-            contributons
+            contributions
         }
 
 		handleSaveContrib(body)

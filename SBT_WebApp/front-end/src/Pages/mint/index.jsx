@@ -5,6 +5,7 @@ import "./index.css"
 import { saveMint } from "../../services";
 import Card from "../../components/card";
 import { saveMintSBT } from "../../services/mint";
+
 export default function Mint({workspaceId, spaceId, assignee}) {
 
     const [receiverWalletAddress, setWalletAddressR] = useState("")
@@ -23,7 +24,9 @@ export default function Mint({workspaceId, spaceId, assignee}) {
 			const mintResp = await saveMintSBT({
 				receiverWalletAddress, settingsID, issuerWalletAddress, privateKey, workspaceId, spaceId, assignee:{ id:assignee?._id, username:assignee?.value }
 			})
+
 			setAssetid(mintResp || true)
+
 	
 			setWalletAddressR("")
 			setSettingsID("")

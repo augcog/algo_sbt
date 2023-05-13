@@ -109,7 +109,7 @@ export default function AppTable({ rows, handleContributonChange, handleContribu
 
 					{rows.map((row, index) => (
 						<TableRow
-							key={row.name}
+							key={index}
 							sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 						>
 							<TableCell>
@@ -126,7 +126,7 @@ export default function AppTable({ rows, handleContributonChange, handleContribu
 									className="app-input"
 									onKeyUp={(event)=>enforceMinMax(event)}
 									value={row?.weight}
-									onChange={(event)=> handleWeightChange(row, e.target.value) }
+									onChange={(event)=> handleWeightChange(row, event.target.value) }
 								/>
 								%
 							</TableCell>
@@ -150,7 +150,7 @@ export default function AppTable({ rows, handleContributonChange, handleContribu
 														{row.assignees
 															.slice(0, 3)
 															.map((assignee, i) => (
-																<>
+																<div key={i} >
 																	{row?.contribution_approach ===
 																		"1/N" && (
 																		<>
@@ -175,7 +175,7 @@ export default function AppTable({ rows, handleContributonChange, handleContribu
 																	{row.assignees.length - 1 === i
 																		? ""
 																		: ","}
-																</>
+																</div>
 															))}
 														{row.assignees.length > 3 && (
 															<span>...</span>
@@ -188,7 +188,7 @@ export default function AppTable({ rows, handleContributonChange, handleContribu
 														variant="outlined"
 														onClick={(event) => handleContributonClick(event, row)}
 													>
-														Set contributons
+														Set contributions
 													</Button>
 												</>
 											)}

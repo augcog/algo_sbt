@@ -12,6 +12,16 @@ async function saveManageWallets(body){
 	}
 }
 
+async function getManageWallets(workspaceId, spaceId, listId){
+    try {
+        const wallets = await httpClient.get(`${BASE_URL}/manage-wallets/${workspaceId}?spaceId=${spaceId}&listId=${listId}`,{})
+        return wallets?.data?.data || []
+    } catch (error) {
+        return []
+    }
+}
+
 export {
-    saveManageWallets
+    saveManageWallets, 
+    getManageWallets
 }
