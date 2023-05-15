@@ -135,3 +135,13 @@ git clone https://github.com/algorand/sandbox.git
 cd sandbox
 ./sandbox up (or ./sandbox up testnet for running testnet)
 
+## SoulBound Token Flask API
+
+#### Install requirements
+pip install py-algorand-sdk
+pip install flask 
+pip install flask_cors
+
+#### Running the SoulBound Token Flask API
+python main.py
+
